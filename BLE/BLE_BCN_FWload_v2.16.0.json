@@ -1,0 +1,247 @@
+[
+  {
+    "id": "b1c00d96.354b1",
+    "type": "tab",
+    "order": 0,
+    "label": "beacon",
+    "disabled": true
+  },
+  {
+    "id": "cb337e38.bcbc2",
+    "type": "serial-port",
+    "__package": "luvitred/core-io",
+    "__version": "0.1.0",
+    "serialport": "/dev/ttyUSB0",
+    "serialbaud": "115200",
+    "databits": "8",
+    "parity": "none",
+    "stopbits": "1",
+    "switchmode": "no",
+    "flowcontrol": "cts",
+    "controllines": "none",
+    "rfc2217": "none",
+    "newline": "\\r\\n",
+    "out": "char",
+    "addchar": "remove",
+    "disabled": false,
+    "__users": [
+      "f370c6b.ec11e38",
+      "8bc14932.dff9d8"
+    ]
+  },
+  {
+    "id": "f370c6b.ec11e38",
+    "type": "serial in",
+    "__package": "luvitred/core-io",
+    "__version": "0.1.0",
+    "name": "iBeacon reader",
+    "topic": "beacon",
+    "serial": "cb337e38.bcbc2",
+    "x": 300,
+    "y": 200,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "13a6724a.ca09de",
+        "800990ca.b95d2"
+      ]
+    ]
+  },
+  {
+    "id": "8bc14932.dff9d8",
+    "type": "serial control",
+    "__package": "luvitred/core-io",
+    "__version": "0.1.0",
+    "name": "",
+    "serial": "cb337e38.bcbc2",
+    "x": 487.5,
+    "y": 100,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  },
+  {
+    "id": "69fdbbf2.d872c4",
+    "type": "trigger",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "op1": "{\"lines\":{\"dtr\":true}}",
+    "op2": "{\"lines\":{\"dtr\":false}}",
+    "op1type": "val",
+    "op2type": "val",
+    "duration": "2",
+    "extend": "false",
+    "units": "s",
+    "trigger": "msg",
+    "name": "",
+    "x": 287.5,
+    "y": 100,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "8bc14932.dff9d8"
+      ]
+    ]
+  },
+  {
+    "id": "4b6a1cdb.6f4204",
+    "type": "inject",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "key": "",
+    "topic": "",
+    "payload": "test",
+    "payloadType": "none",
+    "fromval": 0,
+    "toval": 10,
+    "repeat": "",
+    "crontab": "",
+    "once": true,
+    "x": 125,
+    "y": 100,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "69fdbbf2.d872c4"
+      ]
+    ]
+  },
+  {
+    "id": "97835971.8f1c88",
+    "type": "ble fw loader",
+    "__package": "luvitred/sensors",
+    "__version": "0.1.0",
+    "filename": "filename",
+    "filenametype": "msg",
+    "serialport": "/dev/ttyUSB0",
+    "logflashproc": true,
+    "topic": "",
+    "name": "",
+    "x": 462.5,
+    "y": 150,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  },
+  {
+    "id": "4f7cee04.5ba97",
+    "type": "scandir",
+    "__package": "luvitred/core-storage",
+    "__version": "0.1.0",
+    "name": "",
+    "files": "/tmp",
+    "topic": "",
+    "create": true,
+    "createmove": true,
+    "delete": false,
+    "deletemove": false,
+    "move": false,
+    "change": false,
+    "createdirs": false,
+    "x": 275,
+    "y": 150,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "97835971.8f1c88"
+      ]
+    ]
+  },
+  {
+    "id": "13a6724a.ca09de",
+    "type": "function",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "decode",
+    "func": "local uuid, major, minor, rssi = msg.payload:match('UUID: (%w+),MAJOR: (%w+),MINOR: (%w+),RSSI: ([%-%d]+)')\nif uuid and major and minor then\n    msg.minor = minor\n    msg.rssi = rssi\n    return msg\nend",
+    "startnil": false,
+    "outputs": 1,
+    "x": 462.5,
+    "y": 200,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "cd98bee7.1e5f7"
+      ]
+    ]
+  },
+  {
+    "id": "6d2f7c87.e76774",
+    "type": "link out",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "b type",
+    "links": [],
+    "x": 1215,
+    "y": 200,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  },
+  {
+    "id": "5da96532.f29fac",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "active": true,
+    "highlight": "none",
+    "console": "false",
+    "complete": "false",
+    "x": 1100,
+    "y": 150,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  },
+  {
+    "id": "800990ca.b95d2",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "active": true,
+    "highlight": "blue",
+    "console": "false",
+    "complete": "false",
+    "x": 425,
+    "y": 250,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  },
+  {
+    "id": "db19d378.edbec",
+    "type": "trigger",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "op1": "1",
+    "op2": "0",
+    "op1type": "pay",
+    "op2type": "nul",
+    "duration": "10",
+    "extend": "false",
+    "units": "s",
+    "trigger": "msg",
+    "name": "",
+    "x": 1087.5,
+    "y": 200,
+    "z": "b1c00d96.354b1",
+    "wires": [
+      [
+        "6d2f7c87.e76774"
+      ]
+    ]
+  },
+  {
+    "id": "cd98bee7.1e5f7",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "active": false,
+    "highlight": "none",
+    "console": "false",
+    "complete": "false",
+    "x": 625,
+    "y": 200,
+    "z": "b1c00d96.354b1",
+    "wires": []
+  }
+]
