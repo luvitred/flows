@@ -1,6 +1,6 @@
 ## Connecting CloudGate to Cayenne via LuvitRED ##
 
-This tutorial helps you in getting your CloudGate Gateway conencted to your Cayenne Platform in jsut a few simple steps.
+This tutorial helps you in getting your CloudGate Gateway conencted to your Cayenne Platform in just a few simple steps.
 **LuvitRED** is visual tool for wiring edge-to-edge on CLoudGate gateways.
 
 Start with installing LuvitRED on your CloudGate from [www.CloudGateUniverse.com](https://cloudgateuniverse.com/docs/luvitred) (Log in to your free account is needed)
