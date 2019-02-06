@@ -80,7 +80,7 @@ The IoTHub node also needs to be configured. Click **add new IoTHub>Pencil**
  
 
 ### 3.1.1 Send message from IoT Hub to Device Sample:
-![](./example_in.png)
+![](./example_in.PNG)
 
 This example is made by connecting a debug node to the IoThub In node. All messages received, will be shown in the debug screen, on the right side of the page. For this example, you can select the same node config as used in the IoTHub out example. 
 
