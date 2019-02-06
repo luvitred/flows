@@ -49,7 +49,7 @@ Getting to know the CloudGate will make following this guide a lot easier. You c
 
 For further steps it is important to set the device up with an internet connection. To be able to access the device and have internet at the same time, you can set up the CloudGate in your routed network. For this to work, you will need to change the firewall rules, or set up port forwarding.  https://cloudgateuniverse.com/docs/firewall-tab 
 
-The easiest way to connect the CG to the internet is by inserting a SIM card with internet access. Don't forget to enter the PIN and APN settings, if needed, in the 3G/LTE Tab. To confirm internet access, look for the connection status on the Home tab of CloudGate's web UI.  ![](./connection_status.png)
+The easiest way to connect the CG to the internet is by inserting a SIM card with internet access. Don't forget to enter the PIN and APN settings, if needed, in the 3G/LTE Tab. To confirm internet access, look for the connection status on the Home tab of CloudGate's web UI.  ![](./connection_status.PNG)
 
 ## 2.1 Install LuvitRed:
  Install LuvitRed on your device. This is done through CloudGate Universe. The CloudGate needs to be connected to the internet to download the update. When the device or group settings for the application are set, the CloudGate will download LuvitRed upon the next check-in. You can accelerate this by doing a reboot. During the process of installation, the CloudGate will reboot once again. 
@@ -70,12 +70,12 @@ Your browser might block LuvitRed popping up, so make sure you allow your browse
 There are two samples one for sending messages to IoT Hub and another for receiving messages from IoT Hub. These examples are made by using the IoTHub In- and Out nodes. 
     
 ### 3.2.1 Send Telemetry to IoT Hub Sample:
-![](./example.png)
+![](./example.PNG)
 
 This example uses an inject node and the IotHub out node. In the configuration of the inject node, you type a string which will be sent over to IotHub. 'Hello' For example. 
 The IoTHub node also needs to be configured. Click **add new IoTHub>Pencil**
 
-![](./azure_settings.png)
+![](./azure_settings.PNG)
 
  
 
